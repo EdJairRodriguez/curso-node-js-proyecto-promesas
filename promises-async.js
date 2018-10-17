@@ -64,6 +64,6 @@ const getResultado = id => {
     .catch(err => console.log(err))
 }
 
-// getResultado(1)
+getResultado(1)
 
 // Pepe tiene una media de 5 en la oposición de Informática
