@@ -1,4 +1,17 @@
 const fs = require('fs')
-const numero1 = fs.readFileSync('./numero1', 'utf-8')
-const numero2 = fs.readFileSync('./numero2', 'utf-8')
-console.log(`El resultado de la suma es  ${parseInt(numero1)+parseInt(numero2)}`)
+const getData = (fileName, type) =>
+  new Promise((resolve, reject) => {
+    fs.readFile(fileName, type, (err, data) => {
+      err ? reject(err) : resolve(parseInt(data))
+    })
+  })
+
+getData('numero1', 'utf-8')
+  .then(fileContent => {
+    numero1 = fileContent
+    return getData('numero2')
+  })
+  .then(numero2 =>
+    console.log(`El resultado de la suma es  ${numero1 + numero2}`)
+  )
+  .catch(err => console.log(err))
