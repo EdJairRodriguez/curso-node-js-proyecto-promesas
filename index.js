@@ -14,4 +14,6 @@ const exchangeRate = (from, to) => {
     })
 }
 
-exchangeRate()
+exchangeRate('USD', 'EUR')
+.then (cambioDivisa => console.log(cambioDivisa))
+.catch (err => console.log(err))
